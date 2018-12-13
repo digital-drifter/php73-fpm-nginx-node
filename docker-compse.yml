@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: app
+    image: app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: ./.env
+    network_mode: "host"
+  db:
+    container_name: db
+    image: mariadb:latest
+    env_file: ./.env.db
+    restart: on-failure
+    network_mode: "host"
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: on-failure
+    network_mode: "host"
