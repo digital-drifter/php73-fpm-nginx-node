@@ -30,6 +30,8 @@ EOF
 
 mkdir data
 
+mv docker-compose.local.yml.example docker-compose.local.yml
+
 echo -n "Building image. This will take a while..."
 
 docker-compose -f docker-compose.yml -f docker-compose.local.yml --no-cache --rm build
