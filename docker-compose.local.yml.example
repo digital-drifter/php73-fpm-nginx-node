@@ -5,8 +5,12 @@ services:
     build:
       args:
         USERNAME: ${USERNAME:-docker}
-        UID: ${USERNAME:-1000}
-        GID: ${USERNAME:-1000}
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-secret}
+        MYSQL_DATABASE: ${MYSQL_DATABASE:-docker}
+        MYSQL_USER: ${MYSQL_USER:-docker}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD:-secret}
   db:
     volumes:
       - ./data:/var/lib/mysql
