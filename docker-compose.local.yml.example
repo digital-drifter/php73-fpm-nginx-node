@@ -4,9 +4,9 @@ services:
   app:
     build:
       args:
-        USERNAME: docker
-        UID: 1000
-        GID: 1000
+        USERNAME: ${USERNAME:-docker}
+        UID: ${USERNAME:-1000}
+        GID: ${USERNAME:-1000}
   db:
     volumes:
       - ./data:/var/lib/mysql
