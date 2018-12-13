@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      args:
+        USERNAME: docker
+        UID: 1000
+        GID: 1000
+  db:
+    volumes:
+      - ./data:/var/lib/mysql
+  
