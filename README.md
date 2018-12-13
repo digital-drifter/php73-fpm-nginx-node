@@ -16,5 +16,5 @@ Based on https://gitlab.com/ric_harvey/nginx-php-fpm
 1. Run the installer script
 
 ```bash
-./install.sh
+./setup.sh
 ```
