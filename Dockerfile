@@ -1,13 +1,10 @@
 FROM richarvey/nginx-php-fpm:latest
 
-ENV NODE_VERSION=11.4.0
-ENV YARN_VERSION=1.12.3
-ENV PHP_VERSION=7.3.0
-
+ARG NODE_VERSION
+ARG YARN_VERSION
+ARG PHP_VERSION
 ARG USERNAME
-
 ARG GID
-
 ARG UID
 
 RUN apk --update add vim zsh git zsh-vcs grep
