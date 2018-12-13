@@ -18,9 +18,3 @@ Based on https://gitlab.com/ric_harvey/nginx-php-fpm
 ```bash
 ./setup.sh
 ```
-
-2. Modify `docker-compose.local.yml` as needed. At the minimum you should set
-  * USERNAME the login account of the host machine - `whoami`
-  * UID unix user id - `id -u`
-  * GID unix group id - `id -g`
-  
