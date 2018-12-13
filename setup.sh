@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-mv .env.example .env
+echo USERNAME=`whoami` >> .env
+echo UID=`id -u` >> .env
+echo GID=`id -g` >> .env
 
 mv .env.db.example .env.db
 
