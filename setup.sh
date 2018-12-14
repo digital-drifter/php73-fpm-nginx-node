@@ -1,39 +1,22 @@
 #!/usr/bin/env bash
 
-cat << EOF > ./.env
-USERNAME=`whoami`
-UID=`id -u`
-GID=`id -g`
-NODE_VERSION=11.4.0
-YARN_VERSION=1.12.3
-PHP_VERSION=7.3.0
-EOF
+if [ -f `pwd`/.env ]; then
+  NODE_VER=$(grep NODE_VER .env | cut -d '=' -f2)
+  YARN_VER=$(grep YARN_VER .env | cut -d '=' -f2)
+  PHP_VER=$(grep PHP_VER .env | cut -d '=' -f2)
+else
+  NODE_VER=11.4.0
+  YARN_VER=$1.12.3
+  PHP_VER=7.3.0
+fi
 
-echo -n "MYSQL ROOT PASSWORD:"
-read MYSQL_ROOT_PASSWORD
-
-echo -n "MYSQL DEFAULT DATABASE:"
-read MYSQL_DATABASE
-
-echo -n "MYSQL DEFAULT USER:"
-read MYSQL_USER
-
-echo -n "MYSQL DEFAULT PASSWORD:"
-read MYSQL_PASSWORD
-
-cat << EOF > ./.env.db
-MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-MYSQL_DATABASE=${MYSQL_DATABASE}
-MYSQL_USER=${MYSQL_USER}
-MYSQL_PASSWORD=${MYSQL_PASSWORD}
-EOF
-
-mkdir data
-
-mv docker-compose.local.yml.example docker-compose.local.yml
-
-echo -n "Building image. This will take a while..."
-
-docker-compose -f docker-compose.yml -f docker-compose.local.yml --no-cache --rm build
-
-echo -n "Complete!"
+docker-compose -f docker-compose.test.yml build \
+  --pull \
+  --force-rm \
+  --no-cache \
+  --build-arg USERNAME=`whoami` \
+  --build-arg UID=`id -u` \
+  --build-arg GID=`id -g` \
+  --build-arg NODE_VER=${NODE_VER} \
+  --build-arg YARN_VER=${YARN_VER} \
+  --build-arg PHP_VER=${PHP_VER}
