@@ -10,6 +10,8 @@ else
   PHP_VER=7.3.0
 fi
 
+echo -n "Building Docker image. This will take a while..."
+
 docker-compose -f docker-compose.test.yml build \
   --pull \
   --force-rm \
@@ -20,3 +22,5 @@ docker-compose -f docker-compose.test.yml build \
   --build-arg NODE_VER=${NODE_VER} \
   --build-arg YARN_VER=${YARN_VER} \
   --build-arg PHP_VER=${PHP_VER}
+
+echo -n "Complete!"
