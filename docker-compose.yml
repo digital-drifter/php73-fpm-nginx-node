@@ -6,7 +6,7 @@ services:
     image: app:latest
     build:
       context: .
-      dockerfile: ./dockerfiles/app/Dockerfile
+      dockerfile: Dockerfile
       args:
         - USERNAME
         - UID
