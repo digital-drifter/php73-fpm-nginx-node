@@ -4,6 +4,8 @@ if [ -f `pwd`/.env ]; then
   NODE_VER=$(grep NODE_VER .env | cut -d '=' -f2)
   YARN_VER=$(grep YARN_VER .env | cut -d '=' -f2)
   PHP_VER=$(grep PHP_VER .env | cut -d '=' -f2)
+  UID=$(grep UID .env | cut -d '=' -f2)
+  GID=$(grep GID .env | cut -d '=' -f2)
 else
   NODE_VER=11.4.0
   YARN_VER=$1.12.3
@@ -17,8 +19,8 @@ docker-compose -f docker-compose.yml build \
   --force-rm \
   --no-cache \
   --build-arg USERNAME=`whoami` \
-  --build-arg UID=$UID \
-  --build-arg GID=$GID \
+  --build-arg UID=${UID} \
+  --build-arg GID=${GID} \
   --build-arg NODE_VER=${NODE_VER} \
   --build-arg YARN_VER=${YARN_VER} \
   --build-arg PHP_VER=${PHP_VER}
