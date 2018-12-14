@@ -9,7 +9,10 @@ Based on https://gitlab.com/ric_harvey/nginx-php-fpm
 
 * [phpbrew](https://github.com/phpbrew/phpbrew)
 
+## Services
 
+* mariadb
+* redis
 
 ## Usage
 
