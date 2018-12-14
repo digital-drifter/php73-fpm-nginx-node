@@ -15,7 +15,7 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar && for key in 6
 
 RUN curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew && chmod +x phpbrew && mv phpbrew /usr/local/bin/phpbrew
 
-RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && apk add --update --no-cache --virtual .build-deps-phpbrew alpine-sdk build-base lcov bzip2-dev curl-dev gettext-dev gmp-dev readline-dev libedit-dev libzip-dev
+RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && apk add --update --no-cache --virtual .build-deps-phpbrew alpine-sdk build-base lcov bzip2-dev curl-dev gettext-dev gmp-dev readline-dev libedit-dev libzip-dev autoconf
 
 USER $USERNAME
 
