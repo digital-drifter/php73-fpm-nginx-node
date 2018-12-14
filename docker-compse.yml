@@ -6,13 +6,23 @@ services:
     image: app:latest
     build:
       context: .
-      dockerfile: Dockerfile
-    env_file: ./.env
+      dockerfile: ./dockerfiles/app/Dockerfile
+      args:
+        - USERNAME
+        - UID
+        - GID
+        - NODE_VER
+        - PHP_VER
+        - YARN_VER
     network_mode: "host"
   db:
     container_name: db
     image: mariadb:latest
-    env_file: ./.env.db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-secret}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-docker}
+      MYSQL_USER: ${MYSQL_USER:-docker}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-secret}
     restart: on-failure
     network_mode: "host"
   redis:
