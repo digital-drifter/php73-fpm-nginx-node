@@ -12,7 +12,7 @@ fi
 
 echo -n "Building Docker image. This will take a while..."
 
-docker-compose -f docker-compose.test.yml build \
+docker-compose -f docker-compose.yml build \
   --pull \
   --force-rm \
   --no-cache \
