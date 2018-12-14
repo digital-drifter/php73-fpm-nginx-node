@@ -17,8 +17,8 @@ docker-compose -f docker-compose.yml build \
   --force-rm \
   --no-cache \
   --build-arg USERNAME=`whoami` \
-  --build-arg UID=`id -u` \
-  --build-arg GID=`id -g` \
+  --build-arg UID=$UID \
+  --build-arg GID=$GID \
   --build-arg NODE_VER=${NODE_VER} \
   --build-arg YARN_VER=${YARN_VER} \
   --build-arg PHP_VER=${PHP_VER}
